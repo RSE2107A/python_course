@@ -1,0 +1,4 @@
+site_name: My Docs
+nav:
+  - Home: index.md
+  - Lesson 1: lesson1.md
