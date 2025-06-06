@@ -37,6 +37,8 @@
     
       <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
     
+      <link rel="stylesheet" href="../assets/css/pyodide-style.css">
+    
     <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -146,6 +148,77 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      variables
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Functions/" class="md-tabs__link">
+      Functions
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../tutorial/" class="md-tabs__link">
+      tutorial
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../interactive_python/" class="md-tabs__link">
+      Interactive Python
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -158,8 +231,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="CodeMine - Python Course" class="md-nav__button md-logo" aria-label="CodeMine - Python Course" data-md-component="logo">
       
@@ -227,6 +302,36 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/" class="md-nav__link">
+        tutorial
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_python/" class="md-nav__link">
+        Interactive Python
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -261,10 +366,30 @@
 
 <h1 id="variables">Variables</h1>
 <p>Learn how to create and use variables in Python.</p>
-<p>```python
+<!-- 1) The editable code area -->
+<textarea id="code-variables" style="width: 100%; height: 150px;">
+# Edit these lines, then click “Run”
 x = 5
 y = "Hello"
-print(x, y)</p>
+print(x, y)
+</textarea>
+<p><br></p>
+<!-- 2) The button (starts out enabled, but JS will immediately disable it) -->
+<p><button id="run-btn-variables">Run</button></p>
+<!-- 3) Where output will go -->
+<pre id="output-variables"></pre>
+
+<!-- 4) Tell our runner “Hey, set me up” -->
+<script>
+  (function waitForRunner() {
+    if (typeof setupPyodideRunner === "function") {
+      setupPyodideRunner("variables");
+    } else {
+      // If the runner.js hasn’t loaded yet, check again in 50ms
+      setTimeout(waitForRunner, 50);
+    }
+  })();
+</script>
 
               
             </article>
@@ -330,12 +455,14 @@ print(x, y)</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.748e2769.min.js"></script>
       
-        <script src="https://pyscript.net/latest/pyscript.js"></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+      
+        <script src="../assets/js/pyodide-runner.js"></script>
       
     
   </body>
